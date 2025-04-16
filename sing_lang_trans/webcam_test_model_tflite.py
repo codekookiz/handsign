@@ -7,12 +7,12 @@ from modules.utils import Vector_Normalization
 from PIL import ImageFont, ImageDraw, Image
 
 # 설정
-actions = ['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅅ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ',
-           'ㅏ', 'ㅑ', 'ㅓ', 'ㅕ', 'ㅗ', 'ㅛ', 'ㅜ', 'ㅠ', 'ㅡ', 'ㅣ',
-           'ㅐ', 'ㅒ', 'ㅔ', 'ㅖ', 'ㅢ', 'ㅚ', 'ㅟ']
+actions = ["아프다", "열"]
 seq_length = 10
-fontpath = "fonts/HMKMMAG.TTF"
-font = ImageFont.truetype(fontpath, 40)
+try:
+    font = ImageFont.truetype("fonts/HMKMMAG.TTF", 40)
+except:
+    font = ImageFont.truetype("/System/Library/Fonts/Supplemental/AppleGothic.ttf", 40)
 
 def initialize_detector_and_model():
     """MediaPipe 홀리스틱 모델과 TFLite 모델 초기화"""

@@ -12,9 +12,7 @@ createDirectory('dataset/output_video')
 
 # 설정
 seq_length = 10  # 시퀀스 길이
-actions = ['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅅ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ',
-           'ㅏ', 'ㅑ', 'ㅓ', 'ㅕ', 'ㅗ', 'ㅛ', 'ㅜ', 'ㅠ', 'ㅡ', 'ㅣ',
-           'ㅐ', 'ㅒ', 'ㅔ', 'ㅖ', 'ㅢ', 'ㅚ', 'ㅟ']  # 인식할 동작 목록
+actions = ['아프다', '열']  # 인식할 동작 목록
 
 # 데이터셋 초기화
 dataset = {i: [] for i in range(len(actions))}
@@ -95,7 +93,7 @@ for target in testTargetList:
         dataset[idx].append(data[seq:seq + seq_length])
 
 # 데이터 저장 (현재 주석 처리됨)
-'''
+
 def save_dataset():
     """
     추출된 데이터셋을 파일로 저장
@@ -107,4 +105,3 @@ def save_dataset():
     print("Finish Save Dataset")
 
 save_dataset()
-'''
