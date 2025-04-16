@@ -7,7 +7,7 @@ from modules.utils import Vector_Normalization
 from PIL import ImageFont, ImageDraw, Image
 
 # 설정
-actions = ["아프다", "열"]
+actions = ["아프다", "열", "두통", "구토", "피곤하다", "복통", "기침", "가렵다", "어지럽다", "숨막힌다"]
 seq_length = 10
 try:
     font = ImageFont.truetype("fonts/HMKMMAG.TTF", 40)
@@ -75,6 +75,10 @@ def main():
             conf = y_pred[i_pred]
 
             if conf < 0.9:
+                continue
+
+            if i_pred >= len(actions):
+                print(f"[WARNING] 예측 결과 인덱스 {i_pred}가 actions 범위를 벗어났습니다.")
                 continue
 
             action = actions[i_pred]
