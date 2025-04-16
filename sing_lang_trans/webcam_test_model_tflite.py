@@ -7,7 +7,10 @@ from modules.utils import Vector_Normalization
 from PIL import ImageFont, ImageDraw, Image
 
 # 설정
-actions = ['아프다', '열', "기침", "콧물", "코막힘", "머리", "배", "설사", "변비", "구토"]
+actions = [
+    "가렵다", "답답하다", "땀난다", "떨린다", "베였다", "부었다", "불편하다", "숨가쁘다",
+    "아프다", "어지럽다", "열", "지속된다", "찔렸다", "피", "피곤하다", "힘들다"
+]
 seq_length = 10
 try:
     font = ImageFont.truetype("fonts/HMKMMAG.TTF", 40)
@@ -39,10 +42,15 @@ def predict_action(interpreter, input_data):
     return y_pred[0]
 
 def draw_text_on_image(img, text):
-    """이미지에 한글 텍스트 그리기"""
+    """이미지에 한글 텍스트를 중앙 하단 자막 형태로 표시"""
     img_pil = Image.fromarray(img)
     draw = ImageDraw.Draw(img_pil)
-    draw.text((10, 30), text, font=font, fill=(255, 255, 255))
+    w, h = img_pil.size
+    bbox = draw.textbbox((0, 0), text, font=font)
+    text_w = bbox[2] - bbox[0]
+    text_h = bbox[3] - bbox[1]
+    position = ((w - text_w) / 2, h - text_h - 30)
+    draw.text(position, text, font=font, fill=(255, 255, 255))
     return np.array(img_pil)
 
 def main():
