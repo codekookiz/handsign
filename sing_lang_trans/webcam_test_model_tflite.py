@@ -8,8 +8,8 @@ from PIL import ImageFont, ImageDraw, Image
 
 # 설정
 actions = [
-    "가렵다", "답답하다", "땀난다", "떨린다", "베였다", "부었다", "불편하다", "숨가쁘다",
-    "아프다", "어지럽다", "열", "지속된다", "찔렸다", "피", "피곤하다", "힘들다"
+    "답답하다", "땀난다", "떨린다", "베였다", "부었다", "불편하다",
+    "아프다", "어지럽다", "열", "지속된다", "피곤하다"
 ]
 seq_length = 10
 try:
@@ -50,6 +50,15 @@ def draw_text_on_image(img, text):
     text_w = bbox[2] - bbox[0]
     text_h = bbox[3] - bbox[1]
     position = ((w - text_w) / 2, h - text_h - 30)
+
+    # Draw background rectangle for better visibility
+    margin = 10
+    draw.rectangle(
+        [position[0] - margin, position[1] - margin,
+         position[0] + text_w + margin, position[1] + text_h + margin],
+        fill=(0, 0, 0, 180)  # Semi-transparent black
+    )
+    
     draw.text(position, text, font=font, fill=(255, 255, 255))
     return np.array(img_pil)
 
