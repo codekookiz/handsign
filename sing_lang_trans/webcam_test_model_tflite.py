@@ -7,7 +7,7 @@ from modules.utils import Vector_Normalization
 from PIL import ImageFont, ImageDraw, Image
 
 # 설정
-actions = ["아프다", "열", "두통", "구토", "피곤하다", "복통", "기침", "가렵다", "어지럽다", "숨막힌다"]
+actions = ['아프다', '열', "기침", "콧물", "코막힘", "머리", "배", "설사", "변비", "구토"]
 seq_length = 10
 try:
     font = ImageFont.truetype("fonts/HMKMMAG.TTF", 40)
