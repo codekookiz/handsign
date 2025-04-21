@@ -1,4 +1,4 @@
-# 수어 인식 및 번역 모델
+# 수어 인식 및 번역 모델 (원본: https://github.com/Ghoney99/hearing_impaired_helper_make_model/tree/main)
 
 ## 📋 프로젝트 개요
 
